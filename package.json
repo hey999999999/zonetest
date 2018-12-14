@@ -1,0 +1,24 @@
+{
+  "name": "zonetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hey999999999/zonetest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hey999999999/zonetest/issues"
+  },
+  "homepage": "https://github.com/hey999999999/zonetest#readme",
+  "dependencies": {
+    "async-hooks": "^1.0.0",
+    "node-zone": "^0.2.0",
+    "zone.js": "^0.8.26"
+  }
+}
