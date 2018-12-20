@@ -1,8 +1,10 @@
+//global.Promise = require('bluebird');
 // zone.js を読み込む
 require('zone.js/dist/zone-node');
+//require('zones-proposal');
 
 const sleep = (millis) => new Promise((resolve) => setTimeout(resolve, millis));
-/*
+
 // zoneを作る
 Zone.current.fork({
   name: 'zone1',
@@ -19,27 +21,37 @@ Zone.current.fork({
   properties: { context:'<0002>' }
 }).run(() => main());
 
-async function main() {
+function main () {
+  mainA();
+  sleep(2000).then(mainB);
+}
+
+function mainA () {
   async_log('Hello');
-  console.log(1, Zone.current.get('context'));
+  sleep(500).then(() => {
+    async_log('World');
+    return sleep(500);
+  }).then(() => async_log('!'));
+}
+
+async function mainB() {
+  async_log('Hello');
   await sleep(500);
-  console.log(2, Zone.current.get('context'));
   async_log('World');
-  console.log(3, Zone.current.get('context'));
   await sleep(500);
-  console.log(4, Zone.current.get('context'));
   async_log('!');
 }
 
 function async_log(msg) {
   console.log(Zone.current.name, msg);
 }
-*/
+
 function log(str) {
   Zone.root.run(function() {
     console.log(str);
   });
 }
+/*
 function foo() {
   Zone.current.fork({
     name: 'fooZone', 
@@ -61,3 +73,4 @@ function foo() {
 };
 
 foo();
+*/

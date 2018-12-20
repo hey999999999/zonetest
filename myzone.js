@@ -5,17 +5,21 @@ let current
 const asyncHooks = require('async_hooks')
 const asyncHook = asyncHooks.createHook({
   init (uid) {
+    //console.log('init', uid);
     zones[uid] = current
   },
 
   before (uid) {
+    //console.log('before', uid);
     current = zones[uid]
   },
 
   after (uid) {
+    //console.log('after', uid);
   },
 
   destroy (uid) {
+    //console.log('destroy', uid);
     delete zones[uid]
   },
 })
